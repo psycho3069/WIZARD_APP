@@ -18,8 +18,8 @@
                             <a href="{{ route('product.index') }}" class="btn btn-outline-primary fw-bold">Products</a>
                         @elseif(auth()->user()->type == 'customer')
                             <a href="{{ route('cart.index') }}" class="btn btn-outline-info fw-bold">Shopping Cart</a>
-                            <a href="{{ route('order.index') }}" class="btn btn-outline-secondary fw-bold">Orders</a>
                         @endif
+                        <a href="{{ route('order.index') }}" class="btn btn-outline-secondary fw-bold">Orders</a>
                 </div>
             </div>
         </div>

@@ -18,8 +18,9 @@
                         <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100">
                             <thead>
                             <tr>
-                                @if(auth()->user()->getAuthIdentifier() == 'admin' || auth()->user()->getAuthIdentifier() == 'sub_admin')
+                                @if(auth()->user()->type == 'admin' || auth()->user()->type == 'sub_admin')
                                     <th>User</th>
+                                    <th>Email</th>
                                 @endif
                                 <th>Order Number</th>
                                 <th>Order Date</th>
@@ -31,8 +32,9 @@
                             <tbody>
                             @foreach($orders as $order)
                                 <tr>
-                                    @if(auth()->user()->getAuthIdentifier() == 'admin' || auth()->user()->getAuthIdentifier() == 'sub_admin')
+                                    @if(auth()->user()->type == 'admin' || auth()->user()->type == 'sub_admin')
                                         <td>{{ $order->user->name }}</td>
+                                        <td>{{ $order->user->email }}</td>
                                     @endif
                                     <td>{{ $order->order_number }}</td>
                                     <td>{{ $order->order_date }}</td>
