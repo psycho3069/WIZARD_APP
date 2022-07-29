@@ -37,29 +37,30 @@
                                     <th>Total Price</th>
                                 </tr>
                             @foreach($carts as $cart)
-                                <tr>
-
-                                    <td>
-                                        <input type="hidden" class="form-check-inline" name="item[{{$cart->product->id}}][product_id]" value="{{ $cart->product->id }}">
-                                        {{ $cart->product->name }}
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-check-inline" name="item[{{$cart->product->id}}][accurate_weight]" placeholder="Enter Accurate Weight" value="{{ $cart->product->weight }}">
-                                        {{ $cart->product->unit }}
-                                    </td>
-                                    <td>
-                                        <input type="hidden" class="form-check-inline" name="item[{{$cart->product->id}}][quantity]" value="{{ $cart->quantity }}">
-                                        {{ $cart->quantity }}
-                                    </td>
-                                    <td>
-                                        <input type="hidden" class="form-check-inline" name="item[{{$cart->product->id}}][unit_price]" value="{{ $cart->product->unit_price }}">
-                                        {{ $cart->product->unit_price }}
-                                    </td>
-                                    <td>
-                                        <input type="hidden" class="form-check-inline" name="item[{{$cart->product->id}}][sub_total]" placeholder="" value="{{ $cart->product->unit_price*$cart->quantity }}">
-                                        {{ $cart->product->unit_price*$cart->quantity }}
-                                    </td>
-                                </tr>
+                                @if($cart->quantity > 0)
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" class="form-check-inline" name="item[{{$cart->product->id}}][product_id]" value="{{ $cart->product->id }}">
+                                            {{ $cart->product->name }}
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-check-inline" name="item[{{$cart->product->id}}][accurate_weight]" placeholder="Enter Accurate Weight" value="{{ $cart->product->weight }}">
+                                            {{ $cart->product->unit }}
+                                        </td>
+                                        <td>
+                                            <input type="hidden" class="form-check-inline" name="item[{{$cart->product->id}}][quantity]" value="{{ $cart->quantity }}">
+                                            {{ $cart->quantity }}
+                                        </td>
+                                        <td>
+                                            <input type="hidden" class="form-check-inline" name="item[{{$cart->product->id}}][unit_price]" value="{{ $cart->product->unit_price }}">
+                                            {{ $cart->product->unit_price }}
+                                        </td>
+                                        <td>
+                                            <input type="hidden" class="form-check-inline" name="item[{{$cart->product->id}}][sub_total]" placeholder="" value="{{ $cart->product->unit_price*$cart->quantity }}">
+                                            {{ $cart->product->unit_price*$cart->quantity }}
+                                        </td>
+                                    </tr>
+                                @endif
                             @endforeach
                             </tbody>
                         </table>

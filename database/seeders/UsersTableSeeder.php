@@ -49,7 +49,7 @@ class UsersTableSeeder extends Seeder
             2 =>
             array (
                 'id' => 3,
-                'name' => 'user',
+                'name' => 'customer user',
                 'email' => 'user@gmail.com',
                 'email_verified_at' => NULL,
                 'password' => Hash::make('11112222'),

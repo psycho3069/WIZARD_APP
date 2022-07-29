@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateOrderRequest;
 use App\Models\OrderItem;
 use Illuminate\Database\Events\TransactionBeginning;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -81,7 +82,16 @@ class OrderController extends Controller
                 'status' => 'confirmed',
             ]);
 
+            $details = [
+                'title' => 'Order Confirmed',
+                'body' => 'Hello '.auth()->user()->name.'. Your order has been confirmed. Order number '.$order->order_number.'. was received at '.$order->order_date
+            ];
+
+            Mail::to(auth()->user()->email)->send(new \App\Mail\OrderConfirmationMail($details));
+
             DB::commit();
+
+            return redirect()->route('order.index');
         } catch (\Exception $exception){
             DB::rollBack();
             throw new \Exception($exception->getMessage());
