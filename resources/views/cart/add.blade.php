@@ -24,7 +24,7 @@
             @endif
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Product To Scan</h5>
+                    <h5 class="card-title">Scan Product</h5>
                     <form action="{{ route('cart.store') }}" method="POST">
                         @csrf
                         <div class="row">

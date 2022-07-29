@@ -28,6 +28,7 @@ class CartController extends Controller
      */
     public function index()
     {
+        /* ----- get the cart items for current user ----- */
         $carts = Cart::query()->where('user_id',auth()->user()->getAuthIdentifier())->get();
         return view('cart.index',compact('carts'));
     }
@@ -50,17 +51,21 @@ class CartController extends Controller
      */
     public function store(StoreCartRequest $request)
     {
+        /* ----- search if the barcode is available in product table ----- */
         $product = Product::query()->where('barcode',$request->barcode)->first();
         if ($product){
+            /* ----- search if cart already have the `product` for current `user` ----- */
             $cart = Cart::query()
                 ->where('product_id',$product->id)
                 ->where('user_id',auth()->user()->getAuthIdentifier())
                 ->first();
             if ($cart){
+                /* ----- if cart already have it then increment the quantity ----- */
                 $cart->quantity++;
                 $cart->save();
                 Session::flash('status', 'Product ('.$product->name.' - '.$product->weight.$product->unit.') Added To CART (Total '.$cart->quantity.') Successfully!');
             } else {
+                /* ----- if cart doesn't have it then insert it with quantity 1 ----- */
                 Cart::query()->create([
                     'product_id' => $product->id,
                     'user_id' => auth()->user()->getAuthIdentifier(),
@@ -69,6 +74,7 @@ class CartController extends Controller
                 Session::flash('status', 'Product ('.$product->name.' - '.$product->weight.$product->unit.') Added To CART (Total 1) Successfully!');
             }
         } else {
+            /* ----- product table doesn't have the barcode, so show invalid msg ----- */
             Session::flash('status', 'Invalid Barcode!');
             return redirect()->back();
         }

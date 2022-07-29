@@ -17,7 +17,7 @@
                         @if(auth()->user()->type == 'admin' || auth()->user()->type == 'sub_admin')
                             <a href="{{ route('product.index') }}" class="btn btn-outline-primary fw-bold">Products</a>
                         @elseif(auth()->user()->type == 'customer')
-                            <a href="{{ route('product.scan') }}" class="btn btn-outline-info fw-bold">Scan Product</a>
+                            <a href="{{ route('cart.index') }}" class="btn btn-outline-info fw-bold">Shopping Cart</a>
                         @endif
                 </div>
             </div>

@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12">
-                <a href="{{ route('cart.create') }}" class="btn btn-primary mb-2 float-end">Create cart</a>
+                <a href="{{ route('cart.create') }}" class="btn btn-primary mb-2 float-end">Add to CART</a>
             </div>
             <div class="col-12">
                 @if (session('status'))
