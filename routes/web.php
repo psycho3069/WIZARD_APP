@@ -24,3 +24,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('product', App\Http\Controllers\ProductController::class);
 
 Route::resource('cart', App\Http\Controllers\CartController::class);
+
+Route::resource('order', App\Http\Controllers\OrderController::class);
+
+Route::resource('order-item', App\Http\Controllers\OrderItemController::class)->names('order_item');

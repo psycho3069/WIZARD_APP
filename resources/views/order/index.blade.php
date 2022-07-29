@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-12">
                 <a href="{{ route('home') }}" class="btn btn-primary mb-2 float-start">Home</a>
-                <a href="{{ route('cart.create') }}" class="btn btn-primary mb-2 float-end">Add to CART</a>
+                <a href="{{ route('order.create') }}" class="btn btn-primary mb-2 float-end">Create Order</a>
             </div>
             <div class="col-12">
                 @if (session('status'))
@@ -18,31 +18,32 @@
                         <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100">
                             <thead>
                             <tr>
-                                <th>Product</th>
-                                <th>Unit</th>
-                                <th>Weight</th>
-                                <th>Quantity</th>
+                                @if(auth()->user()->getAuthIdentifier() == 'admin' || auth()->user()->getAuthIdentifier() == 'sub_admin')
+                                    <th>User</th>
+                                @endif
+                                <th>Order Number</th>
+                                <th>Order Date</th>
+                                <th>Status</th>
+                                <th>Total Price</th>
                             </tr>
                             </thead>
 
                             <tbody>
-                            @foreach($carts as $cart)
-                                @if($cart->quantity > 0)
+                            @foreach($orders as $order)
                                 <tr>
-                                    <td>{{ $cart->product->name }}</td>
-                                    <td>{{ $cart->product->unit }}</td>
-                                    <td>{{ $cart->product->weight }}</td>
-                                    <td>{{ $cart->quantity }}</td>
+                                    @if(auth()->user()->getAuthIdentifier() == 'admin' || auth()->user()->getAuthIdentifier() == 'sub_admin')
+                                        <td>{{ $order->user->name }}</td>
+                                    @endif
+                                    <td>{{ $order->order_number }}</td>
+                                    <td>{{ $order->order_date }}</td>
+                                    <td>{{ $order->status }}</td>
+                                    <td>{{ $order->total_price }}</td>
                                 </tr>
-                                @endif
                             @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
-            </div>
-            <div class="col-12">
-                <a href="{{ route('order.create') }}" class="btn btn-secondary my-2 float-end">Submit Order</a>
             </div>
         </div>
     </div>

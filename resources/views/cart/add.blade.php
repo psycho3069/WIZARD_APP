@@ -3,6 +3,7 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-8">
+            <a href="{{ route('home') }}" class="btn btn-primary mb-2 float-start">Home</a>
             <a href="{{ route('cart.index') }}" class="btn btn-primary mb-2 float-end">Back</a>
         </div>
         <div class="col-8">

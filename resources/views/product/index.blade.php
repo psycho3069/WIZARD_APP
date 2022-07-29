@@ -4,6 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12">
+                <a href="{{ route('home') }}" class="btn btn-primary mb-2 float-start">Home</a>
                 <a href="{{ route('product.create') }}" class="btn btn-primary mb-2 float-end">Create product</a>
             </div>
             <div class="col-12">
@@ -20,6 +21,7 @@
                                 <th>Name</th>
                                 <th>Barcode</th>
                                 <th>Unit</th>
+                                <th>Unit Price</th>
                                 <th>Weight</th>
                             </tr>
                             </thead>
@@ -30,6 +32,7 @@
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->barcode }}</td>
                                     <td>{{ $product->unit }}</td>
+                                    <td>{{ $product->unit_price }}</td>
                                     <td>{{ $product->weight }}</td>
                                 </tr>
                             @endforeach

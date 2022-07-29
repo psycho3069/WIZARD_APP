@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('barcode')->unique();
-            $table->string('unit')->nullable();
-            $table->double('unit_price');
-            $table->double('weight')->nullable()->default(0);
+            $table->foreignId('user_id')->constrained();
+            $table->string('order_number');
+            $table->date('order_date')->default(date('Y-m-d'));
+            $table->enum('status',['pending','confirmed','shipped','delivered','received'])->default('pending');
+            $table->double('total_price')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('orders');
     }
 };
