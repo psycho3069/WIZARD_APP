@@ -2,19 +2,19 @@
 
 @section('content')
     <div class="row justify-content-center">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
         <div class="col-8">
             <a href="{{ route('product.index') }}" class="btn btn-primary mb-2 float-end">Back</a>
         </div>
         <div class="col-8">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Product Information</h5>
