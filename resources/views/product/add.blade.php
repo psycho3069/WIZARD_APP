@@ -29,14 +29,20 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" name="sku" placeholder="Enter SKU">
-                                    <label for="sku">SKU</label>
+                                    <input type="text" class="form-control" name="barcode" placeholder="Enter Barcode">
+                                    <label for="barcode">Barcode</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" name="unit" placeholder="Enter Unit">
                                     <label for="unit">Unit</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="weight" placeholder="Enter Weight">
+                                    <label for="weight">Weight</label>
                                 </div>
                             </div>
                         </div>

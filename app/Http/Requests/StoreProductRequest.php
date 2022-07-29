@@ -25,8 +25,9 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'sku' => 'required|unique:products,id',
+            'barcode' => 'required|unique:products,id',
             'unit' => 'nullable',
+            'weight' => 'nullable',
         ];
     }
 }

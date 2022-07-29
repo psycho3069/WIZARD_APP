@@ -14,31 +14,33 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('products')->delete();
-        
+
         \DB::table('products')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'name' => 'Rice',
-                'sku' => 'WER324',
+                'barcode' => 'WER324',
                 'unit' => 'KG',
+                'weight' => '15',
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'name' => 'Sugar',
-                'sku' => 'HJS987',
+                'barcode' => 'HJS987',
                 'unit' => 'KG',
+                'weight' => '10',
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
         ));
-        
-        
+
+
     }
 }

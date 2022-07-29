@@ -18,8 +18,9 @@
                             <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>SKU</th>
+                                <th>Barcode</th>
                                 <th>Unit</th>
+                                <th>Weight</th>
                             </tr>
                             </thead>
 
@@ -27,8 +28,9 @@
                             @foreach($products as $product)
                                 <tr>
                                     <td>{{ $product->name }}</td>
-                                    <td>{{ $product->sku }}</td>
+                                    <td>{{ $product->barcode }}</td>
                                     <td>{{ $product->unit }}</td>
+                                    <td>{{ $product->weight }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
