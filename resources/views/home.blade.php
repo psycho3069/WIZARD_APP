@@ -14,7 +14,11 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    @if(auth()->user()->type == 'admin' || auth()->user()->type == 'sub_admin')
+                        <a href="{{ route('product.index') }}" class="btn btn-outline-primary fw-bold">Products</a>
+                    @elseif(auth()->user()->type == 'customer')
+
+                    @endif
                 </div>
             </div>
         </div>
